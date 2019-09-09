@@ -1,21 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { postCafe } from './actions/cafeActions';
-import { Form, Container } from 'react-bootstrap';
+import { Form, Container, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
-function NewCafe(){
+function NewCafe(props){
+  const [cafeName, setCafeName] = useState('')
+  const [cafeRating, setCafeRating] = useState(0)
+  const [cafeFeatures, setCafeFeatures] = useState('')
+
+  const handleClick = (info) => {
+    info.preventDefault();
+
+    const newCafe = {
+      name: cafeName,
+      rating: cafeRating,
+      features: cafeFeatures
+    }
+    props.postCafe(newCafe)
+
+  }
+
   return (
     <Container>
-      <div >
+      <div>
         <Form>
-          <Form.Group controlId="exampleForm.ControlInput1">
+          <Form.Group>
             <Form.Label>Cafe</Form.Label>
-            <Form.Control type="text" placeholder="Joe's Joe" />
+            <Form.Control type="text" placeholder="Joe's Joe" onChange={(e) => setCafeName(e.target.value)} value={cafeName}/>
           </Form.Group>
-          <Form.Group controlId="exampleForm.ControlSelect1">
+          <Form.Group>
             <Form.Label>Rating</Form.Label>
-            <Form.Control as="select">
+            <Form.Control as="select" onChange={(e) => setCafeRating(e.target.value)} value={cafeRating}>
               <option>1</option>
               <option>2</option>
               <option>3</option>
@@ -23,10 +39,13 @@ function NewCafe(){
               <option>5</option>
             </Form.Control>
           </Form.Group>
-          <Form.Group controlId="exampleForm.ControlTextarea1">
+          <Form.Group>
             <Form.Label>Features</Form.Label>
-            <Form.Control as="textarea" rows="3" />
+            <Form.Control as="textarea" rows="3" onChange={(e) => setCafeFeatures(e.target.value)} value={cafeFeatures}/>
           </Form.Group>
+          <Button variant="primary" type="submit" onClick={handleClick}>
+           Submit
+         </Button>
         </Form>
       </div>
     </Container>

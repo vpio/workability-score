@@ -16,7 +16,7 @@ export default function(state = initialState, action) {
     case POST_CAFE:
       return {
         ...state,
-        cafes: [action.payload, ...state.items]
+        cafes: [action.payload, ...state.cafes]
 
       };
     default:
