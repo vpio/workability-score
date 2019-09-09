@@ -1,0 +1,19 @@
+{
+  "name": "workability-score",
+  "version": "1.0.0",
+  "description": "Rank a cafe based on ability to do remote work.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vpio/workability-score.git"
+  },
+  "author": "Pio Molina",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vpio/workability-score/issues"
+  },
+  "homepage": "https://github.com/vpio/workability-score#readme"
+}
