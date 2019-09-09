@@ -1,4 +1,4 @@
-import { GET_CAFES } from '../actions/types.js'
+import { GET_CAFES, POST_CAFE } from '../actions/types.js'
 
 const initialState = {
   cafes: [
@@ -12,6 +12,12 @@ export default function(state = initialState, action) {
     case GET_CAFES:
       return {
         ...state,
+      };
+    case POST_CAFE:
+      return {
+        ...state,
+        cafes: [action.payload, ...state.items]
+
       };
     default:
       return state;
